@@ -9,6 +9,7 @@
   "author": "Ranjan karki",
   "license": "ISC",
   "devDependencies": {
+    "@faker-js/faker": "^9.9.0",
     "cypress": "^14.5.4"
   }
 }
