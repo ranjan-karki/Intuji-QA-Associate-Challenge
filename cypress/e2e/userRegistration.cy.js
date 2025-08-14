@@ -1,18 +1,18 @@
-//import faker
-import { faker } from "@faker-js/faker";
-const name = faker.person.firstName() + '' + faker.person.lastName();
-const email = faker.internet.email();
+
+import { savedUserData, userData } from "../support/dataGenerator";
+import { LOGIN_SIGNUP_SELECTORS } from "../support/selectors";
 
 
-describe('Lunch autimation exercise app', () => {
+describe('Open Signup page ', () => {
   it('Passes', () => {
-    cy.visit('https://automationexercise.com/login');
-    cy.get('#form > div > div > div:nth-child(3) > div > form > input[type=text]:nth-child(2)').type(name);
-    cy.get('#form > div > div > div:nth-child(3) > div > form > input[type=email]:nth-child(3)').type(email);
-    cy.get("#form > div > div > div:nth-child(3) > div > form > button").click();
+    cy.visit('/login');
+    const user = savedUserData();
+    cy.get(LOGIN_SIGNUP_SELECTORS.nameField).type(user.firstName);
+    cy.get(LOGIN_SIGNUP_SELECTORS.emailField).type(user.email);
+    cy.get(LOGIN_SIGNUP_SELECTORS.signUpButton).click();
 
     //Assert the signup page
-    cy.url().should('include','https://automationexercise.com/signup');
+    cy.url().should('include','/signup');
 
     //Assert the page heading
     cy.contains('Enter Account Information').should('be.visible');
