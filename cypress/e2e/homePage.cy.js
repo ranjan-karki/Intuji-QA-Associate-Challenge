@@ -12,5 +12,6 @@ describe('Opened app - page nav links are clickable', () => {
     cy.get(NAV_LINK_SELECTORS.homePage) .should('be.visible')   // element is visible
     .and('not.be.disabled'); //element is not disabled
 
+
   })
 })

@@ -1,8 +1,15 @@
 import { faker } from '@faker-js/faker';
 
-//date generator form fakerjs
-function _generateUserData() {
+
+//data generator form fakerjs
+function _generateUserData() { 
+  const yearsAgo = faker.number.int({min:20,max:30})
+
+    const date = faker.date.past({years:yearsAgo});
+
   return {
+    
+
     firstName: faker.person.firstName(),
     lastName: faker.person.lastName(),
     email: faker.internet.email(),
@@ -14,7 +21,10 @@ function _generateUserData() {
     state: faker.location.state(),
     city: faker.location.city(),
     zipcode: faker.location.zipCode(),
-    phoneNumber: faker.phone.number()
+    mobilenumber: faker.phone.number(),  
+    day: date.getDate(),
+    month:date.getMonth(),
+    year: date.getFullYear()
   };
 }
 
