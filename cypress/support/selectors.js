@@ -1,12 +1,13 @@
 
 
 export const LOGIN_SIGNUP_SELECTORS = {
-    loginEmail:'.login-form > form:nth-child(2) > input:nth-child(2)',
-    loginPassword:'.login-form > form:nth-child(2) > input:nth-child(3)',
-    loginButton:'button.btn:nth-child(4)',
-    nameField: '#form > div > div > div:nth-child(3) > div > form > input[type=text]:nth-child(2)',
-    emailField: '#form > div > div > div:nth-child(3) > div > form > input[type=email]:nth-child(3)',
-    signUpButton:'#form > div > div > div:nth-child(3) > div > form > button'
+    loginEmail:'[data-qa="login-email"]',
+    loginPassword:'[data-qa="login-password"]',
+    loginButton:'[data-qa="login-button"]',
+    nameField: '[data-qa="signup-name"]',
+    emailField: '[data-qa="signup-email"]',
+    signUpButton:'[data-qa="signup-button"]',
+    email_password_incorrect:'#form > div > div > div.col-sm-4.col-sm-offset-1 > div > form > p'
 
   };
 
@@ -34,13 +35,30 @@ continueButton:'a.btn'
 
 };
 
-
 export const NAV_LINK_SELECTORS={
 homePage:'a[href="/"]',
 productPage:'a[href="/priducts"]',
 cartPage:'a[href="/view_cart"]',
 signupLoginPage:'a[href="/login"]',
-logout:'a[href="/logout"]'
-
+logout:'a[href="/logout"]',
+delete_account:'a[href="/delete_account"]'
 
 };
+
+export const PRODUCTS_SELECTORS={
+  searchProduct:'#search_product',
+  searchButton:'#submit_search',
+  detailButton:'a[href="/product_details"]',
+  productCard:'.productinfo',
+  categoryWomen:'a[href="#Women"]',
+  categryWomen_dress:'a[href="/category_products/1]',
+  breadCrumb:'.breadcrumbs',
+  productWrapper:'.product-image-wrapper',
+  viewProduct:'a[href^="/product_details/"]',
+  listProductName:'.productinfo p',
+  listProductPrice:'.productinfo h2',
+  detailProductName:'.product-information h2',
+  detailProductPrice:'.product-information span span',
+  detailProductAvailability:'.product-information p'
+
+}

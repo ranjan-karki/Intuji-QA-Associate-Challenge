@@ -15,3 +15,16 @@
 
 // Import commands.js using ES2015 syntax:
 import './commands'
+
+const user = require('../fixtures/registeredUser.json');
+import { LOGIN_SIGNUP_SELECTORS } from './selectors';
+
+
+Cypress.Commands.add('loginWithSession', () => {
+  cy.session('user', () => {
+    cy.visit('/login');
+    cy.get(LOGIN_SIGNUP_SELECTORS.loginEmail).type(user.registeredEmail);
+    cy.get(LOGIN_SIGNUP_SELECTORS.loginPassword).type(user.registeredPassword);
+    cy.get(LOGIN_SIGNUP_SELECTORS.loginButton).click();
+  });
+});

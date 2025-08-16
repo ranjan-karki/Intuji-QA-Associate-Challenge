@@ -1,7 +1,7 @@
 
 import { NAV_LINK_SELECTORS } from "../support/selectors";
 
-describe('Opened app - page nav links are clickable', () => {
+describe('Opened app', () => {
   it('Passes', () => {
     cy.visit('/')
     cy.get('body').should('contain.text', 'AutomationExercise');

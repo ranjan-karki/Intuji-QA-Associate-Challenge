@@ -2,9 +2,10 @@
 import { savedUserData, userData } from "../support/dataGenerator";
 import { LOGIN_SIGNUP_SELECTORS } from "../support/selectors";
 import { SIGNUP_SELECTORS } from "../support/selectors";
+import { NAV_LINK_SELECTORS } from "../support/selectors";
 
 
-describe('Open Signup page ', () => {
+describe('user registration scenarios ', () => {
 
   let user;
 
@@ -22,23 +23,23 @@ describe('Open Signup page ', () => {
 
   });
 
-  // it('Should show name, email and email field disabled, ', () => {
+  it('Should show name, email and email field disabled, ', () => {
 
-  //   //asserting name and email prefield and are disabled
-  //   cy.get(SIGNUP_SELECTORS.nameField).should('have.value',user.firstName);
-  //   cy.get(SIGNUP_SELECTORS.emailField).should('have.value',user.email);
-  //   cy.get(SIGNUP_SELECTORS.nameField).should('not.be.disabled');
-  //   cy.get(SIGNUP_SELECTORS.emailField).should('be.disabled'); 
-  // });
-  // it('Should show error on clicked with empty fields', ()=>{
+    //asserting name and email prefield and are disabled
+    cy.get(SIGNUP_SELECTORS.nameField).should('have.value',user.firstName);
+    cy.get(SIGNUP_SELECTORS.emailField).should('have.value',user.email);
+    cy.get(SIGNUP_SELECTORS.nameField).should('not.be.disabled');
+    cy.get(SIGNUP_SELECTORS.emailField).should('be.disabled'); 
+  });
+  it('Should show error on clicked with empty fields', ()=>{
 
-  //   cy.get(SIGNUP_SELECTORS.createAccountButton).click();
+    cy.get(SIGNUP_SELECTORS.createAccountButton).click();
 
-  //   //Asserting error response for empty fields
-  //   cy.get(SIGNUP_SELECTORS.passwordField)
-  //           .invoke('prop', 'validationMessage')
-  //           .should('equal', `Please fill out this field.`);
-  // })
+    //Asserting error response for empty fields
+    cy.get(SIGNUP_SELECTORS.passwordField)
+            .invoke('prop', 'validationMessage')
+            .should('equal', `Please fill out this field.`);
+  })
 
   it('should register user',()=>{
     cy.get(SIGNUP_SELECTORS.passwordField).type(user.password);
@@ -64,10 +65,17 @@ describe('Open Signup page ', () => {
     //asserting user is directed back to home page
       cy.url().should('include','/');
 
-      //asserting user is logged in
-      cy.get(NAV_LINK_SELECTORS.logout) .should('be.visible')   // element is visible
-      .and('not.be.disabled'); //element is not disabled
+      cy.writeFile('cypress/fixtures/registeredUser.json', {
+        registeredEmail:user.email,
+        registeredPassword: user.password
+      });
 
+      //asserting user is logged in
+      cy.get(NAV_LINK_SELECTORS.logout) .should('be.visible') 
+    .and('not.be.disabled'); 
+
+    cy.get(NAV_LINK_SELECTORS.delete_account) .should('be.visible')
+    .and('not.be.disabled');
 
   })
 })
