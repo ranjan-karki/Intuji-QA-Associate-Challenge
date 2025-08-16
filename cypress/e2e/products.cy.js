@@ -34,8 +34,8 @@ describe('Products scenarios ', () => {
   it('should filter products by women-dress',() =>{
 
     cy.get(PRODUCTS_SELECTORS.categoryWomen).click();
-    cy.wait(500)
-    cy.get(PRODUCTS_SELECTORS.categryWomen_dress).click();
+    cy.wait(1000)
+    cy.get(PRODUCTS_SELECTORS.categroyWomen_dress).click();
 
     //asserting bradcrumbs
     cy.get(PRODUCTS_SELECTORS.breadCrumb).should('be.visible')

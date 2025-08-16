@@ -51,7 +51,11 @@ export const PRODUCTS_SELECTORS={
   detailButton:'a[href="/product_details"]',
   productCard:'.productinfo',
   categoryWomen:'a[href="#Women"]',
-  categryWomen_dress:'a[href="/category_products/1]',
+  categroyWomen_dress:'a[href="/category_products/1"]',
+  categoryMen:'a[href="#Men"]',
+  categroyMen_tshirts :'a[href="/category_products/3"]',
+  categoryKid:'a[href="#Kids"]',
+  categroyKid_dress :'a[href="/category_products/4"]',
   breadCrumb:'.breadcrumbs',
   productWrapper:'.product-image-wrapper',
   viewProduct:'a[href^="/product_details/"]',
@@ -59,6 +63,10 @@ export const PRODUCTS_SELECTORS={
   listProductPrice:'.productinfo h2',
   detailProductName:'.product-information h2',
   detailProductPrice:'.product-information span span',
-  detailProductAvailability:'.product-information p'
+  detailProductAvailability:'.product-information p',
+  addtoCart:'[data-product-id]',
+  continueShopingButton:'btn btn-success close-modal btn-block'
+
+
 
 }

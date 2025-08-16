@@ -11,7 +11,7 @@ describe('user registration scenarios ', () => {
 
   before(() => {
     user = savedUserData();
-    cy.writeFile('cypress/fixtures/user.json', user);
+    
   })
 
   beforeEach(() => {
@@ -77,5 +77,6 @@ describe('user registration scenarios ', () => {
     cy.get(NAV_LINK_SELECTORS.delete_account) .should('be.visible')
     .and('not.be.disabled');
 
-  })
+  });
+ 
 })
