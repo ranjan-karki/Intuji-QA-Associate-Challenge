@@ -2,7 +2,7 @@
 import { CART_SELECTORS, NAV_LINK_SELECTORS, PRODUCTS_SELECTORS } from "../support/selectors";
 
 Cypress.on('uncaught:exception', (err, runnable) => {
-    return false;
+  return false;
 });
 
 describe('Add to cart scenaros', () => {
@@ -11,11 +11,11 @@ describe('Add to cart scenaros', () => {
   function clickCategory(categorySelector) {
     cy.get(categorySelector).click({ timeout: 1000 });
   }
-  
+
   function clickSubCategory(subCategorySelector) {
     cy.get(subCategorySelector).should('be.visible').click();
   }
-  
+
   function addFirstProductToCart() {
     cy.get(PRODUCTS_SELECTORS.addtoCart).first().click();
   }
@@ -42,7 +42,7 @@ describe('Add to cart scenaros', () => {
 
   beforeEach(() => {
     cy.loginWithSession();
-    cy.visit('/products'); 
+    cy.visit('/products');
   });
 
   it('should have correct total price when added multiple products and removed first product', () => {
@@ -65,7 +65,7 @@ describe('Add to cart scenaros', () => {
       .find('.cart_total_price')
       .invoke('text')
       .then((text) => {
-        const firstRowPrice = parseInt(text.replace(/[^\d]/g, ''), 10); 
+        const firstRowPrice = parseInt(text.replace(/[^\d]/g, ''), 10);
         cy.log('First row price:', firstRowPrice);
 
         // Delete first row product

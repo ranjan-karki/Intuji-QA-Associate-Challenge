@@ -11,7 +11,7 @@ describe('user registration scenarios ', () => {
 
   before(() => {
     user = savedUserData();
-    
+
   })
 
   beforeEach(() => {
@@ -26,22 +26,22 @@ describe('user registration scenarios ', () => {
   it('Should show name, email and email field disabled, ', () => {
 
     //asserting name and email prefield and are disabled
-    cy.get(SIGNUP_SELECTORS.nameField).should('have.value',user.firstName);
-    cy.get(SIGNUP_SELECTORS.emailField).should('have.value',user.email);
+    cy.get(SIGNUP_SELECTORS.nameField).should('have.value', user.firstName);
+    cy.get(SIGNUP_SELECTORS.emailField).should('have.value', user.email);
     cy.get(SIGNUP_SELECTORS.nameField).should('not.be.disabled');
-    cy.get(SIGNUP_SELECTORS.emailField).should('be.disabled'); 
+    cy.get(SIGNUP_SELECTORS.emailField).should('be.disabled');
   });
-  it('Should show error on clicked with empty fields', ()=>{
+  it('Should show error on clicked with empty fields', () => {
 
     cy.get(SIGNUP_SELECTORS.createAccountButton).click();
 
     //Asserting error response for empty fields
     cy.get(SIGNUP_SELECTORS.passwordField)
-            .invoke('prop', 'validationMessage')
-            .should('equal', `Please fill out this field.`);
+      .invoke('prop', 'validationMessage')
+      .should('equal', `Please fill out this field.`);
   })
 
-  it('should register user',()=>{
+  it('should register user', () => {
     cy.get(SIGNUP_SELECTORS.passwordField).type(user.password);
     cy.get(SIGNUP_SELECTORS.daySelectorField).type(user.day);
     cy.get(SIGNUP_SELECTORS.monthSelecterField).type(user.day);
@@ -63,20 +63,20 @@ describe('user registration scenarios ', () => {
     cy.get(SIGNUP_SELECTORS.continueButton).click();
 
     //asserting user is directed back to home page
-      cy.url().should('include','/');
+    cy.url().should('include', '/');
 
-      cy.writeFile('cypress/fixtures/registeredUser.json', {
-        registeredEmail:user.email,
-        registeredPassword: user.password
-      });
+    cy.writeFile('cypress/fixtures/registeredUser.json', {
+      registeredEmail: user.email,
+      registeredPassword: user.password
+    });
 
-      //asserting user is logged in
-      cy.get(NAV_LINK_SELECTORS.logout) .should('be.visible') 
-    .and('not.be.disabled'); 
+    //asserting user is logged in
+    cy.get(NAV_LINK_SELECTORS.logout).should('be.visible')
+      .and('not.be.disabled');
 
-    cy.get(NAV_LINK_SELECTORS.delete_account) .should('be.visible')
-    .and('not.be.disabled');
+    cy.get(NAV_LINK_SELECTORS.delete_account).should('be.visible')
+      .and('not.be.disabled');
 
   });
- 
+
 })

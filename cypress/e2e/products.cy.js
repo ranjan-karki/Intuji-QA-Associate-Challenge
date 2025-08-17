@@ -6,11 +6,11 @@ describe('Products scenarios ', () => {
   beforeEach(() => {
     cy.loginWithSession(); //session call
     cy.visit('/products');
-    
+
   });
 
   it('should go to products page', () => {
-    
+
     //asserting user is guided to products page
     cy.url().should('include', '/products');
 
@@ -31,7 +31,7 @@ describe('Products scenarios ', () => {
 
   });
 
-  it('should filter products by women-dress',() =>{
+  it('should filter products by women-dress', () => {
 
     cy.get(PRODUCTS_SELECTORS.categoryWomen).click();
     cy.wait(1000)
@@ -45,8 +45,8 @@ describe('Products scenarios ', () => {
 
       // asserting keyword 
       cy.wrap($item).find('p').should('contain.text', 'Dress');
-      });
+    });
   });
 
-  
+
 });

@@ -9,8 +9,8 @@ describe('Opened app', () => {
     cy.contains('Category').should('be.visible');
     cy.contains('Brands').should('exist');
 
-    cy.get(NAV_LINK_SELECTORS.homePage) .should('be.visible')   // element is visible
-    .and('not.be.disabled'); //element is not disabled
+    cy.get(NAV_LINK_SELECTORS.homePage).should('be.visible')   // element is visible
+      .and('not.be.disabled'); //element is not disabled
 
 
   })
