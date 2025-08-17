@@ -37,7 +37,7 @@ continueButton:'a.btn'
 
 export const NAV_LINK_SELECTORS={
 homePage:'a[href="/"]',
-productPage:'a[href="/priducts"]',
+productPage:'a[href="/products"]',
 cartPage:'a[href="/view_cart"]',
 signupLoginPage:'a[href="/login"]',
 logout:'a[href="/logout"]',
@@ -65,8 +65,25 @@ export const PRODUCTS_SELECTORS={
   detailProductPrice:'.product-information span span',
   detailProductAvailability:'.product-information p',
   addtoCart:'[data-product-id]',
-  continueShopingButton:'btn btn-success close-modal btn-block'
+  continueShopingButton:'btn btn-success close-modal btn-block',
+  productPrice:' .overlay-content > h2'
 
+
+
+}
+
+export const CART_SELECTORS={
+ rowsSelector:'tbody tr',
+ // priceSelector:'tbody .cart_total_price',
+  quantitySelector:'tbody .cart_quantity',
+ // deleteProductSelector:'.cart_quantity_delete',
+ // rowsSelector: '#cart_info_table tbody tr',
+//  deleteProductSelector: 'a.cart_quantity_delete',
+  priceSelector: '.cart_total_price',
+
+ // rowsSelector: '#cart_info_table tbody tr',
+  firstRowPrice: 'td.cart_price p',   // 👈 update this to match
+  deleteProductSelector: '.cart_quantity_delete'
 
 
 }
